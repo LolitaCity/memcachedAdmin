@@ -40,15 +40,16 @@ class Login extends Controller{
      * @return #
      */
     public function checkLogin(){
-        if(input('post.username')==NULL || input('post.username')!='root'){
-            return false;
+        if(input('username')==NULL || input('username')!='root'){
+            return json(jsonData(lang("login_error"),300));
         }
-        if(input('post.password')==NULL || input('post.password')!='root'){
-            return false;
-        }
+        if(input('password')==NULL || input('password')!=md5('root')){
+            return json(jsonData(lang("login_error"),300));
+        }        
         session('authId',1);
-        session("username",input('post.username'));
-        $this->redirect('index/index');
+        session("username",input('username'));
+        cookie('think_var',input('language'));
+        return json(jsonData(lang("success",200)));
     }
     
     /**

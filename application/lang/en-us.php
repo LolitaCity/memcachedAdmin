@@ -7,9 +7,32 @@
  */
 return [
     'Username'  =>"username",
+    'User'      =>"user",
     'Password'  =>'password',
     'Language'  =>"language",
-
+    'login_error'   =>'Error Incorrect username or password',
+    'empty_user'    =>'Please fill in the user name',
+    'empty_password'=>'Please fill in the password',
+    'empty_captcha' =>'Two-Dimensional Code Error',
+    'success'       =>'Successful operation',
+    'success_ch_lang'   =>"Successful language switching",
+    'error_ch_lang' =>"Language switching failure",
+    "changeMem" =>"Switching Server",
+    'menu'      =>'Main menu',
+    'date'      =>'Date',
+    'welcome'   =>'Welcome to Management Center',
+    'base_info' =>'Essential information',
+    'Homepage'  =>'homepage',
+    'sure'      =>"Are you sure you want to quit the system?",
+    
+    'blue'      =>"Blue",
+    'green'     =>"Green",
+    'violet'    =>"Violet",
+    'silvery'   =>"Silvery",
+    'sky_blue'  =>"Sky Blue",
+    'sign'      =>"SIGN",
+    
+    
     'title'=>"MemAdmin",
     'info'=>"A GUI Administration for memcached",
     'help'=>"Help",

@@ -7,11 +7,36 @@
  */
 return [
     'Username'  =>"用户名",
-    'Password'  =>'密码',
-    'Language'  =>"语言",
+    'User'      =>"用户",
+    'Password'  =>'密　码',
+    'Language'  =>"语　言",
+    'login_error'   =>'用户名或密码错误',
+    'empty_user'    =>'请填写用户名',
+    'empty_password'=>'请填写密码',
+    'empty_captcha' =>'二维码错误',
+    'success'       =>'操作成功',
+    'success_ch_lang'   =>"语言切换成功",
+    'error_ch_lang'     =>"语言切换失败",
+    "changeMem" =>"切换服务器",
+    'menu'      =>'主菜单',
+    'date'      =>'日期',
+    'welcome'   =>"欢迎进入管理中心",
+    'base_info' =>'基本信息',
+    'Homepage'  =>'主页',
+    'sure'      =>'确定退出系统?',
+    
+    'blue'      =>"蓝色",
+    'green'     =>"绿色",
+    'violet'    =>"紫色",
+    'silvery'   =>"银色",
+    'sky_blue'  =>"天蓝",
+    'sign'      =>"标记",
+    
+    
+    
 
     'title'=>"MemAdmin",
-    'info'=>"可视化的Memcache管理工具",
+    'info'=>"可视化的Memcached管理工具",
     'help'=>"帮助",
     'exit'=>"退出",
 

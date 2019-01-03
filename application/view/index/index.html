@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{:lang('info')}</title>
+{include file="static"/}
+</head>
+<body>
+    <div id="layout">
+        <div id="header">
+            <div class="headerNav">
+                <a class="logo" href="{:url('index')}">{:lang('sign')}</a>
+                <ul class="nav">                    
+                    <li><a class="add" target="dialog" mask="true" href="{:url('index/memList')}" >{:lang('changeMem')}</a></li>
+                    <li><a href="{:url('index/changeLanguage')}" >{if(cookie('think_var')=='zh-cn')}English{else/}中文{/if}</a></li>
+                    <li><a href="{:url('login/logOut')}" onclick="if (confirm({:lang('sure')})) return true; else return false;">{:lang('exit')}</a></li>
+                </ul>
+                <ul class="themeList" id="themeList">
+                    <li theme="default"><div class="selected">{:lang('blue')}</div></li>
+                    <li theme="green"><div>{:lang('green')}</div></li>
+                    <li theme="purple"><div>{:lang('violet')}</div></li>
+                    <li theme="silver"><div>{:lang('silvery')}</div></li>
+                    <li theme="azure"><div>{:lang('sky_blue')}</div></li>
+                </ul>
+            </div>
+            <!-- navMenu -->
+        </div>
+        <div id="leftside">
+            <div id="sidebar_s">
+                <div class="collapse">
+                    <div class="toggleCollapse"><div></div></div>
+                </div>
+            </div>
+            <div id="sidebar">
+                <div class="toggleCollapse"><h2>{:lang('menu')}</h2><div>Shrink</div></div>
+                {include file="index:main"/}
+            </div>
+        </div>
+        <div id="container">
+            <div id="navTab" class="tabsPage">
+                <div class="tabsPageHeader">
+                    <div class="tabsPageHeaderContent"><!-- 显示左右控制时添加 class="tabsPageHeaderMargin" -->
+                        <ul class="navTab-tab">
+                            <li tabid="main" class="main"><a href="javascript:;"><span><span class="home_icon">{:lang("Homepage")}</span></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="tabsLeft">left</div><!-- 禁用只需要添加一个样式 class="tabsLeft tabsLeftDisabled" -->
+                    <div class="tabsRight">right</div><!-- 禁用只需要添加一个样式 class="tabsRight tabsRightDisabled" -->
+                    <div class="tabsMore">more</div>
+                </div>
+                    <ul class="tabsMoreList">
+                        <li><a href="javascript:;">{:lang('Homepage')}</a></li>
+                    </ul>
+                <div class="navTab-panel tabsPageContent layoutBox">
+                    <div class="page unitBox">
+                        <div class="pageFormContent" layoutH="80" style="margin-right:230px">
+                            <table cellspacing=0 cellpadding=0 width="90%" align=center border=0>
+                                <tr height=100>
+                                    <td align=middle width=100><img height=100 src="/static/admin/img/admin_p.gif" width=90 /></td>
+                                    <td width=60>&nbsp;</td>
+                                    <td>
+                                        <table height=100 cellspacing=0 cellpadding=0 width="100%" border=0>
+                                            <tr>
+                                                <td>{:lang('date')}:<?php echo date('Y-m-d h:i:s',time()); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold; font-size: 16px">{$Think.session.username}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{:lang('welcome')}!</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan=3 height=10></td>
+                                </tr>
+                            </table>
+                            <div class="buttonActive" target="_blank"><span>{:lang('base_info')}（oschina）</span></div>
+                            <div class="divider"></div>
+                            <table cellspacing=0 cellpadding=2 width="95%" align=center border=0 id="info" style="font-size:20px">
+<!--                                <tr>
+                                    <td align=right width=100>{:lang('User')}:</td>
+                                    <td style="color: #880000">{$Think.session.username}</td>
+                                </tr>-->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">Copyright &copy; 2010 <a href="demo_page2.html" target="dialog">Lee</a> AAA</div>
+</body>
+</html>

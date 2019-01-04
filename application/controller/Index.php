@@ -73,10 +73,10 @@ class Index extends Common
                 }
             }
         }
-        session('memList',null);
         $memList[]  =$data;
         session('memList',json_encode($memList));
         session('memFlag',null);
+        var_dump(session("memList"));
         if(session("memList")){
             session("default_name",$data['name']);
             session("default_host",$data['host']);

@@ -101,17 +101,17 @@
         var memFlag =$("#memFlag").val();
         var title   =$("#title").val();
         $.ajax({
+            type:'POST',
             async: false,
             url:'/index/getSessionMem',
-            success:function(msg){
-               
+            success:function(msg){               
                if(msg==1){
                     alert(1);
                    //$("#memFlag").val(1);
                     window.onload=function(){ 
-                    $.pdialog.open('/index/memLink','',title,{width:800,height:300,mask:true});
-            }
-               }
+                        $.pdialog.open('/index/memLink','',title,{width:800,height:300,mask:true});
+                    }
+                }
             }
         },"json");
         

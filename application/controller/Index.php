@@ -14,7 +14,11 @@ class Index extends Common
     {
         //菜单列表
         $menuList   =config('menu.');
+        $defaut['name'] =session('default_name');
+        $defaut['host'] =session('default_host');
+        $defaut['port'] =session('default_port');
         $this->assign("menuList",$menuList);
+        $this->assign('default',$defaut);
         return $this->fetch();
     }
     
@@ -67,7 +71,6 @@ class Index extends Common
         $memList=[];
         if(session('memList')!=null){
             $memList= json_decode(session('memList'),true);
-            //去除原默认连接
             foreach($memList as &$v){
                 if($v['name']==$data['name'] ||$v['host']==$data['host']){
                     return json(jsonData(lang("link_exists"),301));
@@ -95,19 +98,10 @@ class Index extends Common
         if(!input('name')||!input('host')||!input('port')){
             return json(jsonData('param_error'),301);
         }
-        session('name',input('name'));
-        session('host',input('host'));
-        session('port',input('port'));
+        session('default_name',input('name'));
+        session('default_host',input('host'));
+        session('default_port',input('port'));
         return json(jsonData(lang('success'),201));
-    }
-    
-    /**
-     * 统计信息
-     * 
-     * @return #
-     */
-    public function statsinfo(){
-        echo 22;
     }
     
     /**
@@ -125,4 +119,14 @@ class Index extends Common
         echo session('memFlag');
         exit;
     }
+    
+    /**
+     * 统计信息
+     * 
+     * @return #
+     */
+    public function statsinfo(){
+        echo 22;
+    }
+    
 }

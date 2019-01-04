@@ -276,4 +276,20 @@ if (!function_exists('memcached')) {
         return \ext\mem\Mem::memcached();
     }
 }
+
+/**
+ * 获取连接信息
+ *
+ * @author Lee<a605333742@gmail.com>
+ * @date    2018-12-15
+ */
+if (!function_exists('getDefaultLink')) {
+    function getDefaultLink($num)
+    {
+        if($num==''){return '';}
+        if($num==1){return session('default_name');}
+        if($num==2){return session('default_host');}
+        if($num==3){return session('default_port');}
+    }
+}
   

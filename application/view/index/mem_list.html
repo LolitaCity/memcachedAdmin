@@ -2,7 +2,7 @@
     <div class="pageFormContent" layoutH="58">
         <ul class="tree treeFolder">
             {foreach $memList as $v}
-            <li><a href="{:url('/index/change',array('name'=>$v.name,'host'=>$v.host,'port'=>$v.port))}" target="ajaxTodo" class="close">　{$v.name}　{$v.host}　　{$v.port}</a></li>
+            <li><a href="{:url('/index/change',array('name'=>urlencode($v.name),'host'=>$v.host,'port'=>$v.port))}" target="ajaxTodo" class="close">　{$v.name}　{$v.host}　　{$v.port}</a></li>
             {/foreach}
         </ul>
     </div>    
@@ -11,6 +11,8 @@
     $(function(){
         $(".close").click(function(){
             $.pdialog.close('changeMem');
+            top.location.reload();
+            parent.location.reload();
         });
     });    
 </script>

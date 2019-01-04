@@ -79,11 +79,34 @@
                             </table>
                             <div class="buttonActive" target="_blank"><span>{:lang('base_info')}（oschina）</span></div>
                             <div class="divider"></div>
-                            <table cellspacing=0 cellpadding=2 width="95%" align=center border=0 id="info" style="font-size:20px">
-<!--                                <tr>
-                                    <td align=right width=100>{:lang('User')}:</td>
-                                    <td style="color: #880000">{$Think.session.username}</td>
-                                </tr>-->
+                            <table cellspacing=0 cellpadding=2 width="30%" align=center border=1 id="info" style="font-size:20px">
+                                <thead align="center" style="background-color: #ededf0">
+                                    <tr>
+                                        <th colspan="2">{:lang('con_arg')}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td align="center" width=100>{:lang('scon_type')}:</td>
+                                        <td align="center">{:lang('scon_mcon')}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" width=100>{:lang('scon_confun')}:</td>
+                                        <td align="center">Memcached::addServer()</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" width=100>{:lang('con_name')}:</td>
+                                        <td align="center" id="default_name">{:getDefaultLink(1)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" width=100>host:</td>
+                                        <td align="center" id="default_host">{$default.host??""}</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" width=100>port:</td>
+                                        <td align="center" id="default_port">{$default.port??""}</td>
+                                    </tr>
+                                </tbody> 
                             </table>
                         </div>
                     </div>
@@ -97,7 +120,7 @@
 </body>
 </html>
 <script>
-    $(function(){
+    $(function(){        
         var memFlag =$("#memFlag").val();
         var title   =$("#title").val();
         $.ajax({
@@ -107,7 +130,7 @@
             success:function(msg){               
                if(msg==1){
                     window.onload=function(){ 
-                        $.pdialog.open('/index/memLink','',title,{width:800,height:300,mask:true});
+                        $.pdialog.open('/index/memLink','',title,{width:400,height:300,mask:true});
                     }
                 }
             }

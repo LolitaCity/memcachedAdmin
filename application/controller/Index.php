@@ -59,7 +59,8 @@ class Index extends Common
      * 
      * @return #
      */
-    public function addMem(){        
+    public function addMem(){ 
+        if(empty(input('name','','trim'))||empty(input('name','','trim'))||empty(input('name','','trim'))){return $this->fetch();}
         $data['name']   =input('name','','trim');
         $data['host']   =input('host','','trim');
         $data['port']   =input('port','','trim');
@@ -76,7 +77,6 @@ class Index extends Common
         $memList[]  =$data;
         session('memList',json_encode($memList));
         session('memFlag',null);
-        var_dump(session("memList"));
         if(session("memList")){
             session("default_name",$data['name']);
             session("default_host",$data['host']);

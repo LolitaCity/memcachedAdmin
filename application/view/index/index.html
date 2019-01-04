@@ -106,19 +106,11 @@
             url:'/index/getSessionMem',
             success:function(msg){               
                if(msg==1){
-                    alert(1);
-                   //$("#memFlag").val(1);
                     window.onload=function(){ 
                         $.pdialog.open('/index/memLink','',title,{width:800,height:300,mask:true});
                     }
                 }
             }
         },"json");
-        
-//        if(memFlag==1){
-//            window.onload=function(){ 
-//                $.pdialog.open('/index/memLink','',title,{width:400,height:300,mask:true});
-//            }
-//        }
     });
 </script>

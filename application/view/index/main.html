@@ -11,21 +11,26 @@
 <input type="hidden" value="{:lang('addMem')}" id='title'>
 <script>
     $(function(){        
+        $(".addMem").click(function(){
+            getSession();
+            var memFlag =$("#memFlag").val();
+            var title   =$("#title").val();
+            if(memFlag==1){
+                $.pdialog.open('/index/memLink','',title,{width:400,height:300,mask:true});
+            }
+        });
+    });
+    function getSession(){
         $.ajax({
             async: false,
             url:'/index/getSessionMem',
             success:function(msg){
                if(msg==1){
                    $("#memFlag").val(1);
+               }else{
+                   $("#memFlag").val(0);
                }
             }
         },"json");
-        var memFlag =$("#memFlag").val();
-        var title   =$("#title").val();
-        $(".addMem").click(function(){
-            if(memFlag==1){
-                $.pdialog.open('/index/memLink','',title,{width:400,height:300,mask:true});
-            }
-        });
-    });
+    }
 </script>

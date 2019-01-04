@@ -24,6 +24,11 @@ return [
     'base_info' =>'Essential information',
     'Homepage'  =>'homepage',
     'sure'      =>"Are you sure you want to quit the system?",
+    'addMem'    =>"add connections",
+    'addSuccess'=>'Add success',
+    'addError'  =>'Add failure',
+    'link_exists'   =>'The connection already exists',
+    'param_error'   =>"Parameter error",
     
     'blue'      =>"Blue",
     'green'     =>"Green",

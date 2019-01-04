@@ -1,0 +1,31 @@
+<div class="pageContent">
+    <form method="post" action="/index/addMem?callbackType=closeCurrent" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">    
+        <div class="pageFormContent" layoutH="58">
+            <div class="unit">
+                <label>连接名称：</label>
+                <input type="text" name="name" size="25"  value="默认连接" class='textInput required '  alt="默认连接"/>
+            </div>
+            <div class="unit">
+                <label>连接地址：</label>
+                <input type="text" name="host" size="25"  value="127.0.0.1" class='textInput required ip' alt="127.0.0.1"/>
+            </div>
+            <div class="unit">
+                <label>端口号：</label>
+                <input type="text" name="port" size="15"  value="11211" class='digits required' alt="11211"/>
+            </div>
+        </div>
+        <div class="formBar">
+           <ul>
+               <li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+               <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+           </ul>
+       </div> 
+    </form>
+</div>
+<script>
+    $(function(){
+        $(".buttonContent").click(function(){
+            parent.location.reload();
+        });
+    });
+</script>

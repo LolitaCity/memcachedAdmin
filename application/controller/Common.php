@@ -24,10 +24,9 @@ class Common extends Controller{
             $this->redirect('Login/index');
         }
         session('memFlag',0);
-        if(cookie('memList')==NULL){
+        if(session('memList')==NULL){
             session('memFlag',1);
-        }else{
-            $this->assign('memList',json_decode(cookie('memList'),true));
-        }        
+        }
+        $this->assign('memFlag',session("memFlag"));
     }
 }

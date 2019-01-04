@@ -33,15 +33,96 @@ class Index extends Common
     }
 
     /**
-     * memcached 连接列表
+     * memcached 显示编辑连接
      * 
      * @return #
      */    
-    public function memList(){
-        if(session('memList')){
-            $this->assign("memList",session('memList'));
-        }
-        $this->assign('memFlag',session('memFlag'));
+    public function memLink(){
         return $this->fetch();
+    }
+    
+    /**
+     * memcached 显示连接列表
+     * 
+     * @return memList
+     */
+    public function memList(){
+        if(session("memList")==null){
+            return $this->fetch('mem_link');
+        }
+        $this->assign("memList",json_decode(session("memList"),true));
+        return $this->fetch();
+    }
+    
+    /**
+     * 添加连接
+     * 
+     * @return #
+     */
+    public function addMem(){        
+        $data['name']   =input('name','','trim');
+        $data['host']   =input('host','','trim');
+        $data['port']   =input('port','','trim');
+        $memList=[];
+        if(session('memList')!=null){
+            $memList= json_decode(session('memList'),true);
+            //去除原默认连接
+            foreach($memList as &$v){
+                if($v['name']==$data['name'] ||$v['host']==$data['host']){
+                    return json(jsonData(lang("link_exists"),301));
+                }
+            }
+        }
+        session('memList',null);
+        $memList[]  =$data;
+        session('memList',json_encode($memList));
+        session('memFlag',null);
+        if(session("memList")){
+            session("default_name",$data['name']);
+            session("default_host",$data['host']);
+            session("default_port",$data['port']);
+            return json(jsonData(lang("addSuccess"),201));
+        }
+        return json(jsonData(lang("addError"),301));
+    }
+    
+    /**
+     * 切换服务器
+     * 
+     * @return #
+     */
+    public function change(){
+        if(!input('name')||!input('host')||!input('port')){
+            return json(jsonData('param_error'),301);
+        }
+        session('name',input('name'));
+        session('host',input('host'));
+        session('port',input('port'));
+        return json(jsonData(lang('success'),201));
+    }
+    
+    /**
+     * 统计信息
+     * 
+     * @return #
+     */
+    public function statsinfo(){
+        echo 22;
+    }
+    
+    /**
+     * ajax获取session
+     * 
+     * @return  #
+     */
+    public function getSessionMem(){
+        if(session('memList')==NULL){
+            session('memFlag',1);
+            echo session('memFlag');
+            exit;
+        }
+        session('memFlag',null);
+        echo session('memFlag');
+        exit;
     }
 }

@@ -1,0 +1,11 @@
+<script>
+    $(function(){
+        var memFlag =$("#memFlag").val();
+        var title   =$("#title").val();
+        if(memFlag==1){
+            window.onload=function(){ 
+                $.pdialog.open('/index/memLink','',title,{width:400,height:300,mask:true});
+            }
+        }
+    });
+</script>

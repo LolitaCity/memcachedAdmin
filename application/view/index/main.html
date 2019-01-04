@@ -2,12 +2,30 @@
     <div class="accordionContent">
         <ul class="tree">
             {foreach $menuList as $k=>$v}
-                {if (session('memFlag')==1)}
-                    <li><a class="add" target="dialog" mask="true" href="{:url('index/memList')}" >{:lang($k)}</a></li>
-                {else/}
-                    <li><a href="{:url($v)}" target="dialog" rel="{$k}">{:lang($k)}</a></li>
-                {/if}
+                <li><a href="{:url($v)}" target="navTab" rel="{$k}" class="addMem">{:lang($k)}</a></li>
             {/foreach}
         </ul>
     </div>
 </div>
+<input type="hidden" value="{$memFlag??''}" id='memFlag'>
+<input type="hidden" value="{:lang('addMem')}" id='title'>
+<script>
+    $(function(){        
+        $.ajax({
+            async: false,
+            url:'/index/getSessionMem',
+            success:function(msg){
+               if(msg==1){
+                   $("#memFlag").val(1);
+               }
+            }
+        },"json");
+        var memFlag =$("#memFlag").val();
+        var title   =$("#title").val();
+        $(".addMem").click(function(){
+            if(memFlag==1){
+                $.pdialog.open('/index/memLink','',title,{width:400,height:300,mask:true});
+            }
+        });
+    });
+</script>

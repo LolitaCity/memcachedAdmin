@@ -10,8 +10,9 @@
         <div id="header">
             <div class="headerNav">
                 <a class="logo" href="{:url('index')}">{:lang('sign')}</a>
-                <ul class="nav">                    
-                    <li><a class="add" target="dialog" mask="true" href="{:url('index/memList')}" >{:lang('changeMem')}</a></li>
+                <ul class="nav">   
+                    <li><a class="add" target="dialog" mask="true" href="{:url('index/memLink')}" width='400' height='300'>{:lang('addMem')}</a></li>
+                    <li><a class="add" target="dialog" mask="true" href="{:url('index/memList')}" width='400' height='300' rel='changeMem'>{:lang('changeMem')}</a></li>
                     <li><a href="{:url('index/changeLanguage')}" >{if(cookie('think_var')=='zh-cn')}English{else/}中文{/if}</a></li>
                     <li><a href="{:url('login/logOut')}" onclick="if (confirm({:lang('sure')})) return true; else return false;">{:lang('exit')}</a></li>
                 </ul>
@@ -89,7 +90,35 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" value="{$memFlag??''}" id='memFlag'>
+        <input type="hidden" value="{:lang('addMem')}" id='title'>
     </div>
-    <div id="footer">Copyright &copy; 2010 <a href="demo_page2.html" target="dialog">Lee</a> AAA</div>
+    <div id="footer">Copyright &copy; 2010 <a href="demo_page2.html" target="dialog" id='lee'>Lee</a> AAA</div>    
 </body>
 </html>
+<script>
+    $(function(){
+        var memFlag =$("#memFlag").val();
+        var title   =$("#title").val();
+        $.ajax({
+            async: false,
+            url:'/index/getSessionMem',
+            success:function(msg){
+               
+               if(msg==1){
+                    alert(1);
+                   //$("#memFlag").val(1);
+                    window.onload=function(){ 
+                    $.pdialog.open('/index/memLink','',title,{width:800,height:300,mask:true});
+            }
+               }
+            }
+        },"json");
+        
+//        if(memFlag==1){
+//            window.onload=function(){ 
+//                $.pdialog.open('/index/memLink','',title,{width:400,height:300,mask:true});
+//            }
+//        }
+    });
+</script>

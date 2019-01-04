@@ -24,6 +24,11 @@ return [
     'base_info' =>'基本信息',
     'Homepage'  =>'主页',
     'sure'      =>'确定退出系统?',
+    'addMem'    =>'添加连接',
+    'addSuccess'=>'添加成功',
+    'addError'  =>'添加失败',
+    'link_exists'   =>'连接已存在',
+    'param_error'   =>"参数错误",
     
     'blue'      =>"蓝色",
     'green'     =>"绿色",

@@ -23,10 +23,25 @@ class Common extends Controller{
         if(session('authId')==NULL){
             $this->redirect('Login/index');
         }
+        if(self::existsMemcached()==FALSE){
+//            return $this->fetch('error/index');
+            return 333;exit;
+        }
         session('memFlag',0);
         if(session('memList')==NULL){
             session('memFlag',1);
         }
         $this->assign('memFlag',session("memFlag"));
+    }
+    
+    /**
+     * 判断当前环境是否存在memcached模块
+     * 
+     * @return #
+     */
+    protected function existsMemcached(){
+        if (!extension_loaded('memcached')) {
+            return FALSE; 
+        }
     }
 }

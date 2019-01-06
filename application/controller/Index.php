@@ -10,6 +10,16 @@ namespace app\controller;
 
 class Index extends Common
 {
+    /**
+     * 构造函数
+     * 
+     * @return #
+     */
+    public function __construct(\think\App $app = null) {
+        parent::__construct($app);
+    }
+
+
     public function index()
     {
         //菜单列表
@@ -101,7 +111,7 @@ class Index extends Common
         session('default_name',input('name'));
         session('default_host',input('host'));
         session('default_port',input('port'));
-        return json(jsonData(lang('success'),201));
+        return json(jsonData(lang('success'),200));
     }
     
     /**
@@ -116,17 +126,40 @@ class Index extends Common
             exit;
         }
         session('memFlag',null);
-        echo session('memFlag');
+        $defaut['name'] =session('default_name');
+        $defaut['host'] =session('default_host');
+        $defaut['port'] =session('default_port');
+        echo json_encode($defaut);
         exit;
     }
     
+    /**
+     * 返回default_session
+     * 
+     * @return  #
+     */
+    public function getSessionDefault(){
+        $defaut['name'] =session('default_name');
+        $defaut['host'] =session('default_host');
+        $defaut['port'] =session('default_port');
+        
+    }
+
+
     /**
      * 统计信息
      * 
      * @return #
      */
     public function statsinfo(){
-        echo 22;
-    }
-    
+        $mem=memcached();
+        $mem->addServer(session("default_host"), intval(session("default_port")));
+        $memStats   =$mem->getStats();
+        if($memStats==FALSE){
+            
+        }
+        $memLink=session("default_host").":".session("default_port");
+        $this->assign('memstats',$memStats[$memLink]);
+        return $this->fetch();
+    }    
 }

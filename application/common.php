@@ -273,7 +273,7 @@ if (!function_exists('redis')) {
 if (!function_exists('memcached')) {
     function memcached()
     {
-        return \ext\mem\Mem::memcached();
+        return \mem\Mem::memcached();
     }
 }
 

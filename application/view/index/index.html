@@ -11,7 +11,7 @@
             <div class="headerNav">
                 <a class="logo" href="{:url('index')}">{:lang('sign')}</a>
                 <ul class="nav">   
-                    <li><a class="add" target="dialog" mask="true" href="{:url('index/memLink')}" width='400' height='300'>{:lang('addMem')}</a></li>
+                    <li><a class="add" target="dialog" mask="true" href="{:url('index/memLink')}" width='400' height='300' >{:lang('addMem')}</a></li>
                     <li><a class="add" target="dialog" mask="true" href="{:url('index/memList')}" width='400' height='300' rel='changeMem'>{:lang('changeMem')}</a></li>
                     <li><a href="{:url('index/changeLanguage')}" >{if(cookie('think_var')=='zh-cn')}English{else/}中文{/if}</a></li>
                     <li><a href="{:url('login/logOut')}" onclick="if (confirm({:lang('sure')})) return true; else return false;">{:lang('exit')}</a></li>
@@ -79,7 +79,7 @@
                             </table>
                             <div class="buttonActive" target="_blank"><span>{:lang('base_info')}（oschina）</span></div>
                             <div class="divider"></div>
-                            <table cellspacing=0 cellpadding=2 width="30%" align=center border=1 id="info" style="font-size:20px">
+                            <table cellspacing=0 cellpadding=2 width="35%" align=center border=1 id="info" style="font-size:20px">
                                 <thead align="center" style="background-color: #ededf0">
                                     <tr>
                                         <th colspan="2">{:lang('con_arg')}</th>
@@ -88,7 +88,7 @@
                                 <tbody>
                                     <tr>
                                         <td align="center" width=100>{:lang('scon_type')}:</td>
-                                        <td align="center">{:lang('scon_mcon')}</td>
+                                        <td align="center" >{:lang('scon_mcon')}</td>
                                     </tr>
                                     <tr>
                                         <td align="center" width=100>{:lang('scon_confun')}:</td>
@@ -122,7 +122,7 @@
 <script>
     $(function(){        
         var memFlag =$("#memFlag").val();
-        var title   =$("#title").val();
+        var title   =$("#title").val();        
         $.ajax({
             type:'POST',
             async: false,
@@ -132,6 +132,11 @@
                     window.onload=function(){ 
                         $.pdialog.open('/index/memLink','',title,{width:400,height:300,mask:true});
                     }
+                }else{
+                    var data=eval("("+msg+")");
+                    $("#default_name").html(data.name);
+                    $("#default_host").html(data.host);
+                    $("#default_post").html(data.post);                    
                 }
             }
         },"json");

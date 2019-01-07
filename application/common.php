@@ -79,38 +79,6 @@ if(!function_exists('ip2Area')){
         return $areaInfo;
     }
 }
-    
- /**
-  * 根据id查询用户角色
-  * 
-  * @param user_id   用户id
-  * 
-  * @return $rName
-  */
-if(!function_exists('getAdminRole')){
-    function getAdminRole($user_id=''){
-        if($user_id==''){return '';}
-        return Db::name("AdminRole")
-                ->alias('a')
-                ->join('Role r','r.id=a.role_id')
-                ->where(array("a.a_id"=>session(config('USER_AUTH_KEY'))))
-                ->value('r.name');
-    }
-}
-
-/**
- * 根据节点id获取节点名
- * 
- * @param   $node_id    节点id
- * 
- * @return  str $nodeName
- */
-if(!function_exists('getNodeName')){
-    function getNodeName($node_id=''){
-        if($node_id=="" ||$node_id==0){return "顶级节点";}
-        return Db::name('Node')->where(array("status"=>1,'id'=>$node_id))->value('name');
-    }
-}
 
 /**
  * 异位或加密解密
@@ -160,18 +128,6 @@ if(!function_exists('jsonData')){
 }
 
 /**
- * 根据后台用户ID获取用户名
- * 
- * @param int admin_id 用户ID
- * @return str adminName 返回用户名
- */
-if(!function_exists('getAdminName')){
-    function getAdminName($admin_id){
-        return Db::name('Admin')->where('id','=',$admin_id)->value('name');
-    }
-}
-
-/**
  * 将时间转为时间戳范围
  * 
  * @param str $time 查询的时间
@@ -183,24 +139,6 @@ if(!function_exists('timeTotimestamp')){
         $start  =strtotime($time);
         $end    =$start+3600*24;
         return [$start,$end];
-    }
-}
-
-/**
- * 将模糊字段转换为ID
- * 
- * @param str $field 被转换的字段
- * @param str $name 对应的数据库字段
- * @param str $db 操作的数据库
- * 
- * @return str $val 转换后的返回值
- */
-if(!function_exists('getIds')){
-    function getIds($field='',$name='name',$db='',$val='id'){
-        $map[]  =[$name,"LIKE","%".trim($field)."%"];
-        $map[]  =['status','=',1];
-        $arrIds =Db::name($db)->where($map)->column($val);
-        return $arrIds;
     }
 }
 
@@ -276,20 +214,3 @@ if (!function_exists('memcached')) {
         return \mem\Mem::memcached();
     }
 }
-
-/**
- * 获取连接信息
- *
- * @author Lee<a605333742@gmail.com>
- * @date    2018-12-15
- */
-if (!function_exists('getDefaultLink')) {
-    function getDefaultLink($num)
-    {
-        if($num==''){return '';}
-        if($num==1){return session('default_name');}
-        if($num==2){return session('default_host');}
-        if($num==3){return session('default_port');}
-    }
-}
-  

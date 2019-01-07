@@ -7,7 +7,7 @@
  */
  return [
     lang("statsinfo")   =>'statsinfo',
-    lang("settinginfo") =>'settinginfo',
+    //lang("settinginfo") =>'settinginfo',
     lang("slabinfo")    =>'slabinfo',
     lang("iteminfo")    =>'iteminfo',
     lang("sizeinfo")    =>'sizeinfo',

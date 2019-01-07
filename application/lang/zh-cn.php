@@ -159,10 +159,10 @@ return [
     'cs_arg'=>"参数",
     'cs_value'=>"值",
     'cs_desc'=>"描述",
-    'cs_pid'=>"memcache服务器进程ID",
+    'cs_pid'=>"memcached服务器进程ID",
     'cs_uptime'=>"服务器已运行秒数",
     'cs_time'=>"服务器当前Unix时间戳",
-    'cs_version'=>"memcache版本",
+    'cs_version'=>"memcached版本",
     'cs_libevent'=>"libevent版本",
     'cs_pointer_size'=>"操作系统指针大小",
     'cs_rusage_user'=>"进程累计用户时间",
@@ -216,6 +216,18 @@ return [
     'cs_hash_is_expanding'=>"hash表正在扩展",
     'cs_expired_unfetched'=>"已过期但未获取的对象数目",
     'cs_evicted_unfetched'=>"已驱逐但未获取的对象数目",
+    //@Lee 2019-01-07
+    'cs_max_connections'   =>'最大连接（用户）数',
+    'cs_rejected_connections'   =>'拒绝连接（用户）数',
+    'cs_get_expired'   =>'超时连接（用户）数',
+    'cs_get_flushed'   =>'已被清空的数据的次数',
+    'cs_time_in_listen_disabled_us' =>'禁止监听时间',
+    'cs_slab_reassign_rescues' =>'资源重分配次数',
+    'cs_slab_reassign_chunk_rescues'    =>'内存块重切割次数',
+    'cs_slab_reassign_inline_reclaim'   =>'重新分配内联回收次数',
+    'cs_slab_reassign_running'   =>'重新分配运行次数',
+    'cs_slabs_moved'   =>'数据移动次数',
+    
 
     //con_settings.php
     'sett_tit'=>"服务器SETTINGS信息",
@@ -242,7 +254,7 @@ return [
     'sett_auth_enabled_sasl'=>"是否启用SASL验证（yes/no）",
     'sett_item_size_max'=>"数据最大尺寸",
     'nosettings'=>"无法获取SETTINGS信息，可能由于无权限或版本不支持",
-    'confail_tokyo_cabinet'=>"无法获取信息，可能由于该连接为支持 memcache 协议的其他服务（如 Tokyo Tyrant 等）",
+    'confail_tokyo_cabinet'=>"无法获取信息，可能由于该连接为支持 memcached 协议的其他服务（如 Tokyo Tyrant 等）",
     'sett_maxconns_fast'=>"达到最大连接时是否报错并关闭连接",
     'sett_hashpower_init'=>"初始hash表等级",
     'sett_slab_reassign'=>"是否开启slab重分配",
@@ -250,8 +262,8 @@ return [
 
     //con_items.php
     'items_tit'=>"服务器ITEMS信息",
-    'noitems'=>"无法获取ITEMS信息，可能由于 memcache 中暂无数据",
-    'noitems_conp'=>"无法获取ITEMS信息，可能由于 memcache 中暂无数据或无法连接",
+    'noitems'=>"无法获取ITEMS信息，可能由于 memcached 中暂无数据",
+    'noitems_conp'=>"无法获取ITEMS信息，可能由于 memcached 中暂无数据或无法连接",
     'items_sslab'=>"选择内存区块",
     'items_number'=>"该slab中对象数（不包含过期对象）",
     'items_age'=>"LRU队列中最老对象的过期时间",
@@ -266,7 +278,7 @@ return [
 
     //con_sizes.php
     'size_tit'=>"服务器SIZES信息",
-    'nosizes'=>"无法获取SIZES信息，可能由于 memcache 中暂无数据",
+    'nosizes'=>"无法获取SIZES信息，可能由于 memcached 中暂无数据",
 
     //con_slabs.php
     'slabs_tit'=>"服务器SLABS信息",
@@ -290,7 +302,7 @@ return [
     'slabs_cas_hits'=>"cas命令命中数",
     'slabs_cas_badval'=>"cas数据类型错误数",
     'noslabs_conp'=>"无法获取SLABS信息",
-    'noslabs_noitems'=>"无法获取SLABS信息，可能由于 memcache 中暂无数据",
+    'noslabs_noitems'=>"无法获取SLABS信息，可能由于 memcached 中暂无数据",
     'slabs_touch_hits'=>"touch命令命中数",
 
     //stats_monitor.php
@@ -320,7 +332,7 @@ return [
 
     //data_monitor.php
     'datamo_tit'=>"数据监控",
-    'datamo_noitems'=>"memcache 中暂无数据，无法进行监控",
+    'datamo_noitems'=>"memcached 中暂无数据，无法进行监控",
     'datamo_arg_tit'=>"Memcache 服务器数据状态监控",
     'datamo_slabarg'=>"SLAB 参数",
     'datamo_gloarg'=>"全局参数",
@@ -351,7 +363,7 @@ return [
     //mem_get.php
     'memg_tit'=>"GET 操作",
     'memg_nokey'=>"请输入要查询的KEY",
-    'memg_delconfirm'=>"确定从memcached中立即删除？",
+    'memg_delconfirm'=>"确定从memcachedd中立即删除？",
     'memg_unserfail'=>"反序列化失败，非序列化字符串",
     'memg_inputnot'=>"查询多个KEY以 空格 分隔",
     'memg_notget'=>"未查到",
@@ -401,7 +413,7 @@ return [
     'itemt_travtit'=>"遍历前",
     'itemt_travtitnum'=>"条记录",
     'itemt_getbut'=>"获取数据",
-    'itemt_numnott'=>"由于memcached源码对cachedump命令的限制，最多遍历2M的key",
+    'itemt_numnott'=>"由于memcachedd源码对cachedump命令的限制，最多遍历2M的key",
     'itemt_moreinfo'=>"更多",
     'itemt_closemore'=>"收起",
     'itemt_size'=>"大小",

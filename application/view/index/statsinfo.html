@@ -1,16 +1,26 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<div class="pageHeader">	
+    <div class="searchBar">
+        <h2 class="contentTitle">>>　{$Think.session.default_name}　 {$Think.session.default_host}</h2>
+    </div>
+</div>
+
+<div class="pageCentent">	
+    <table class="table" width="45%" layoutH="100%">
+        <thead>
+            <tr>
+                <th width="50">参数</th>
+                <th width="80">值</th>
+                <th width="100">描述</th>
+            </tr>
+        </thead>
+        <tbody>
+            {foreach $memstats as $k=>$v}
+                <tr>
+                    <td>{$k}</td>
+                    <td>{$v}</td>
+                    <td>{:lang('cs_'.$k)}</td>
+                </tr>
+            {/foreach}
+        </tbody>
+    </table>	
+</div>

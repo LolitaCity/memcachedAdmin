@@ -40,10 +40,10 @@ class Login extends Controller{
      * @return #
      */
     public function checkLogin(){
-        if(input('username')==NULL || input('username')!='root'){
+        if(input('username')==NULL || input('username')!=env('USERNAME')){
             return json(jsonData(lang("login_error"),300));
         }
-        if(input('password')==NULL || input('password')!=md5('root')){
+        if(input('password')==NULL || input('password')!=md5(env('PASSWORD'))){
             return json(jsonData(lang("login_error"),300));
         }        
         session('authId',1);

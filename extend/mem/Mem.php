@@ -5,7 +5,7 @@
  * @author  Lee<a605333742@gmail.com>
  * @date    2018-12-18
  */
-namespace ext\mem;
+namespace mem;
 
 class Mem{
     public $memModel;

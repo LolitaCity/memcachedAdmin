@@ -96,7 +96,7 @@
                                     </tr>
                                     <tr>
                                         <td align="center" width=100>{:lang('con_name')}:</td>
-                                        <td align="center" id="default_name">{:getDefaultLink(1)}</td>
+                                        <td align="center" id="default_name">{$default.name}</td>
                                     </tr>
                                     <tr>
                                         <td align="center" width=100>host:</td>
@@ -136,7 +136,7 @@
                     var data=eval("("+msg+")");
                     $("#default_name").html(data.name);
                     $("#default_host").html(data.host);
-                    $("#default_post").html(data.post);                    
+                    $("#default_port").html(data.port);                    
                 }
             }
         },"json");

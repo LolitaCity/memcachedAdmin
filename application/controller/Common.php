@@ -24,8 +24,7 @@ class Common extends Controller{
             $this->redirect('Login/index');
         }
         if(self::existsMemcached()==FALSE){
-//            return $this->fetch('error/index');
-            return 333;exit;
+            return $this->fetch('error/nomem');
         }
         session('memFlag',0);
         if(session('memList')==NULL){

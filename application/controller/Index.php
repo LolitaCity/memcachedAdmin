@@ -27,7 +27,6 @@ class Index extends Common
         $default['name']=session('default_name');
         $default['host']=session('default_host');
         $default['port']=session('default_port');
-//        var_dump($default);exit;
         $this->assign("menuList",$menuList);
         $this->assign('default',$default);
         return $this->fetch();
@@ -154,7 +153,6 @@ class Index extends Common
      */
     public function statsinfo(){
         $mem=memcached();
-        $ss=new \ReflectionClass($mem);
         $mem->addServer(session("default_host"), intval(session("default_port")));        
         $memStats   =$mem->getStats();
         if(!$memStats){
@@ -168,10 +166,11 @@ class Index extends Common
                 $memStat[$k]=$v;
             }
         }
-        echo '<pre>';
+        var_dump($memStat);exit;
+//        echo '<pre>';
 //        var_dump($mem->getStats('items'));exit;
         
-        var_dump($mem->getAllKeys());exit;
+        //var_dump($mem->getAllKeys());exit;
         $this->assign('memstats',$memStat);
         return $this->fetch();
     }
